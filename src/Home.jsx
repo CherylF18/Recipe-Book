@@ -4,8 +4,10 @@ import './components/RecipeForm.css';
 import RecipeForm from './components/RecipeForm';
 import RecipeList from './components/RecipeList';
 import Theme from './components/Theme';
+import { useRecipes } from './components/RecipesContext';
 
-export default function Home({ recipes, setRecipes}) {
+export default function Home() {
+  const {recipes, setRecipes} = useRecipes();
   const [categories, setCategories] = useState(() => {
     return recipes ? [...new Set(recipes.map((recipe) => recipe.category).filter(category => category))] : [];
   });

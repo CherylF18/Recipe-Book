@@ -3,8 +3,10 @@ import { useParams } from "react-router-dom";
 import RecipeForm from "./RecipeForm";
 import "./RecipePage.css";
 import Theme from "./Theme";
+import { useRecipes } from "./RecipesContext";
 
-export default function RecipePage({ recipes, setRecipes }) {
+export default function RecipePage() {
+    const {recipes, setRecipes} = useRecipes();
     const [isEditing, setIsEditing] = useState(false);
     const { id } = useParams();
     const recipe = recipes.find(r => r.id == id);
