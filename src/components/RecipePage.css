@@ -1,0 +1,7 @@
+.recipe-page {
+    height: 100vh;
+}
+
+.recipe-page p {
+    color: var(--primary-shadow);
+}
