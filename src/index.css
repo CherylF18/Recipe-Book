@@ -1,3 +1,17 @@
+@media (prefers-color-scheme: dark) {
+  :root {
+  --primary-bg-color: rgba(138, 124, 190, 1);
+  --primary-highlight: rgba(255, 255, 255, 1);
+  --primary-shadow: rgba(103, 91, 150, 1);
+  --primary-body: rgba(61, 53, 88, 1);
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+}
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -48,7 +62,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color:  #f9f9f9;
   transition: border-color 0.25s;
 }
 button:hover {
@@ -61,17 +75,4 @@ button:focus-visible {
 
 input, textarea {
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
