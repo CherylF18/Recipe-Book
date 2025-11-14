@@ -10,7 +10,6 @@ export function RecipesProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem("recipes", JSON.stringify(recipes));
-        console.log(JSON.parse(localStorage.getItem("recipes")));
     }, [recipes]);
 
     return (

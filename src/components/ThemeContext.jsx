@@ -10,7 +10,6 @@ export function ThemeProvider({ children }) {
 
     useEffect(() => {
         localStorage.setItem("isDark", JSON.stringify(darkMode));
-        console.log(JSON.parse(localStorage.getItem("isDark")));
     }, [darkMode]);
 
     return (
