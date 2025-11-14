@@ -1,7 +1,8 @@
-.recipe-page {
+#recipe-page {
     height: 100vh;
+    text-overflow: ellipsis;
 }
 
-.recipe-page p {
-    color: var(--primary-shadow);
+#recipe-page .header {
+    border-bottom: 5px solid #f9f9f9;
 }

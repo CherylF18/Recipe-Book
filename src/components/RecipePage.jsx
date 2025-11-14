@@ -11,7 +11,7 @@ export default function RecipePage() {
     const { id } = useParams();
     const recipe = recipes.find(r => r.id == id);
 
-    if (!recipe) { return <p>Jinkies! No recipe found!</p>; }
+    if (!recipe) { return <p className="info">Jinkies! No recipe found!</p>; }
 
     const handleSubmit = (updatedRecipe) => {
         const updatedRecipes = recipes.map(r => r.id == updatedRecipe.id ? {...r, ...updatedRecipe} : r);
@@ -21,19 +21,17 @@ export default function RecipePage() {
     }
 
     return (
-        <div className="recipe-page">
+        <div id="recipe-page">
             <div className="top header">
                 <h1>Recipe Book: {recipe.recipeName}</h1>
                 <div className="buttons">
                     <Theme />
-                    <button onClick={() => setIsEditing(!isEditing)} id="editButton">Edit</button>
+                    <button onClick={() => setIsEditing(!isEditing)}>Edit</button>
                     {recipe.link && <button onClick={() => window.open(recipe.link, "_blank")}>Go</button>}
                 </div>
             </div>
-
-            
-            
-            {isEditing && <RecipeForm initialData={recipe} onAdd={handleSubmit} />}
+         
+            {isEditing && <RecipeForm initialData={recipe} onAdd={handleSubmit} setShow={setIsEditing}/>}
 
             { (recipe.ingredients || recipe.steps) ? <div className="container">
                 {recipe.ingredients && (
@@ -56,7 +54,7 @@ export default function RecipePage() {
                         </ol>
                     </div>
                 )}
-            </div> : <p> Click edit to add info!</p>}
+            </div> : <p className="info"> Click edit to add info!</p>}
         </div>
     )
 }

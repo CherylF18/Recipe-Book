@@ -3,7 +3,7 @@ import RecipeCard from "./RecipeCard.jsx"
 
 export default function RecipeList({ recipes }) {
     if (recipes.length === 0) {
-        return (<p>No recipes yet!</p>);
+        return (<p className="info">No recipes!</p>);
     }
 
     return ( 
