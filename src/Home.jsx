@@ -27,8 +27,12 @@ export default function Home() {
 
   let filteredRecipes = [];
   filteredRecipes = recipes.filter(recipe => {
-    const nameMatch = recipe.recipeName.toLowerCase().includes(searchTerm);
-    const ingredientMatch = recipe.ingredients.toLowerCase().includes(searchTerm);
+    const name = recipe.recipeName.toLowerCase();
+    const ingredients = recipe.ingredients.split("\n").map(ingredient => ingredient.toLowerCase());
+
+    const searchArr = [...new Set(searchTerm.split(", "))].map(term => term.toLowerCase());
+    const nameMatch = searchArr.every(term => name.includes(term));
+    const ingredientMatch = searchArr.every(term => ingredients.includes(term));
     const categoryMatch = !filtered || recipe.category === filterCategory;
     return (nameMatch || ingredientMatch) && categoryMatch;
   });
@@ -50,7 +54,8 @@ export default function Home() {
         <div className="header">
           <h1>Recipe Book :3</h1>
           <div id="tools">
-            <input type='search' name="q" placeholder='Search..' onChange={(e) => {setSearchTerm(e.target.value.toLowerCase())}}></input>
+            <input type='search' name="q" placeholder='Search..' title='Separate terms by ", "'
+              onChange={(e) => {setSearchTerm(e.target.value.toLowerCase())}}></input>
             <div className="buttons">
               <Theme />
               <button onClick={() => setShowForm(!showForm)} id="addButton">+</button>
@@ -67,6 +72,7 @@ export default function Home() {
           </div>
         }
       </div>
+            
       {showForm && <RecipeForm onAdd={addRecipe} setShow={setShowForm}/>}
 
       <div id="recipe-list">
